@@ -1,6 +1,8 @@
 const userModel = require("../models/User.Model.js");
 const  jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const redis = require("../config/cache");
+
 
 
 async function register(req,res){
@@ -33,6 +35,8 @@ async function register(req,res){
     },process.env.JWT_SECRET,{
         expiresIn:"1d"
     })
+    
+   
 
     res.cookie("token",token)
     
@@ -96,8 +100,39 @@ async function login(req,res){
 
 }
 
+async function getme(req,res){
+      
+    const decoded = req.user;
+  
+
+     const user = await userModel.findOne({_id:decoded.id});
+     
+    return res.status(200).json({message:"user found succefully",
+        user
+
+    })
+
+
+
+}
+
+async function logout(req,res){
+     const token = req.cookies.token;
+
+
+     await redis.set(token,Date.now().toString(),"EX",60*60);
+
+    res.clearCookie("token");
+
+    
+  return  res.status(200).json({
+        message:"Logout successfully"
+    })
+}
 
 module.exports = {
     register,
-    login
+    login,
+    getme,
+    logout
 }
