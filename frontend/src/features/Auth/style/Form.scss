@@ -1,0 +1,73 @@
+main{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container{
+    width: fit-content;
+    height: 30vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    form{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+           label{
+            width: fit-content;
+               font-size: .9rem;
+             font-weight: 300;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+           }
+
+        input{
+            width: 25vw;
+            height: 6vh;
+            border: none;
+            outline: none;
+            border-radius: .5rem;
+            padding-block: 1.3rem;
+            padding-inline: .75rem;
+            background-color: #1A1A1A;
+            color: #9A9A9A;
+            font-weight: 750;
+            font-size: .8rem;
+        }
+
+        button{
+            font-weight: 700;
+            font-size: 1rem;
+            outline: none;
+            border: none;
+             border-radius: .5rem;
+            padding-block: .75rem;
+            padding-inline: .75rem;
+            cursor: pointer;
+        }
+
+      
+    }
+      p{
+            font-weight: 600;
+             color: #9A9A9A;
+             
+            a{  
+                
+               color: inherit;
+               color: white;
+            }
+        }
+}
+
